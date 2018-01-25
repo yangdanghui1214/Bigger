@@ -1,0 +1,31 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!--全屏-->
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <declare-styleable name="MyChartView">
+        <attr name="leftColor" format="color"/>
+        <attr name="leftColorBottom" format="color"/>
+        <attr name="selectLeftColor" format="color"/>
+        <attr name="rightColor" format="color"/>
+        <attr name="rightColorBottom" format="color"/>
+        <attr name="selectRightColor" format="color"/>
+        <attr name="rightColor3" format="color"/>
+        <attr name="rightColorBottom3" format="color"/>
+        <attr name="selectRightColor3" format="color"/>
+        <attr name="xyColor" format="color"/>
+    </declare-styleable>
+</resources>

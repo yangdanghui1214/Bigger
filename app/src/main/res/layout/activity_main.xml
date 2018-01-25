@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <cn.tsign.datadisplay.support.PercentLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/map_background"
+        android:orientation="vertical">
+
+        <cn.tsign.datadisplay.support.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_heightPercent="10%h">
+            <!--日期-->
+            <cn.tsign.datadisplay.support.PercentLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_widthPercent="30%w">
+
+                <TextView
+                    android:id="@+id/text_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:textColor="#ffffff"
+                    app:layout_heightPercent="45%h"
+                    app:layout_textSizePercent="40%" />
+
+                <TextView
+                    android:id="@+id/text_clock"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:textColor="#ffffff"
+                    app:layout_heightPercent="45%h"
+                    app:layout_textSizePercent="40%" />
+            </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@mipmap/map_title"
+                app:layout_widthPercent="35%w" />
+
+            <!--天气-->
+            <cn.tsign.datadisplay.support.PercentLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:orientation="horizontal"
+                app:layout_widthPercent="35%w">
+
+                <cn.tsign.datadisplay.support.PercentLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/weather_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="right"
+                        app:layout_heightPercent="70%h"
+                        app:layout_marginBottomPercent="5%h" />
+
+                    <TextView
+                        android:id="@+id/text_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="江苏省.盐城市"
+                        android:textColor="#ffffff"
+                        app:layout_textSizePercent="15%" />
+                </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+                <cn.tsign.datadisplay.support.PercentLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_marginLeftPercent="5%w">
+
+                    <TextView
+                        android:id="@+id/text_tem"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="right|bottom"
+                        android:text="-6"
+                        android:textColor="#ffffff"
+                        app:layout_heightPercent="70%h"
+                        app:layout_textSizePercent="40%" />
+
+                    <TextView
+                        android:id="@+id/text_pm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="pm2.5:141"
+                        android:textColor="#ffffff"
+                        app:layout_textSizePercent="15%" />
+                </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+                <cn.tsign.datadisplay.support.PercentLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_marginLeftPercent="5%w"
+                    app:layout_marginRightPercent="5%w">
+
+                    <TextView
+                        android:id="@+id/text_weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="right|bottom"
+                        android:text="大雪"
+                        android:textColor="#ffffff"
+                        app:layout_heightPercent="70%h"
+                        app:layout_marginBottomPercent="5%h"
+                        app:layout_textSizePercent="40%" />
+
+                    <TextView
+                        android:id="@+id/text_pollution"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:text="轻度污染"
+                        android:textColor="#ffffff"
+                        app:layout_textSizePercent="15%" />
+                </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+            </cn.tsign.datadisplay.support.PercentLinearLayout>
+        </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+        <cn.tsign.datadisplay.support.PercentRelativeLayout
+            android:id="@+id/activity_region_detect_sview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.tsign.datadisplay.lib.region.widget.RegionDetectSurfaceView
+                android:id="@+id/rdv_detect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_activate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tv_detect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tv_organization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tv_zoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+
+            <cn.tsign.datadisplay.support.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_heightPercent="40%h"
+                app:layout_marginLeftPercent="3%w"
+                app:layout_marginTopPercent="20%h"
+                app:layout_paddingPercent="0.5%w"
+                app:layout_widthPercent="16%h"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="用户日活跃数"
+                    android:textColor="@color/width"
+                    app:layout_marginTopPercent="3%h"
+                    app:layout_textSizePercent="5%" />
+
+                <ProgressBar
+                    android:id="@+id/main_bar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/bar_red_color_bg"
+                    android:secondaryProgress="100"
+                    app:layout_heightPercent="3.8%h"
+                    app:layout_marginTopPercent="0.8%h"
+                    app:layout_paddingPercent="1%w" />
+
+                <TextView
+                    android:id="@+id/tv_bay_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="457294"
+                    android:textColor="@color/width"
+                    app:layout_textSizePercent="4.5%" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="用户月活跃数"
+                    android:textColor="@color/width"
+                    app:layout_marginTopPercent="8%h"
+                    app:layout_textSizePercent="5%" />
+
+                <ProgressBar
+                    android:id="@+id/main_bar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/bar_orange_color_bg"
+                    android:secondaryProgress="100"
+                    app:layout_heightPercent="3.8%h"
+                    app:layout_marginTopPercent="0.8%h"
+                    app:layout_paddingPercent="1%w" />
+
+                <TextView
+                    android:id="@+id/tv_month_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="457294"
+                    android:textColor="@color/width"
+                    app:layout_textSizePercent="4.5%" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="终端设备数"
+                    android:textColor="@color/width"
+                    app:layout_marginTopPercent="8%h"
+                    app:layout_textSizePercent="5%" />
+
+                <ProgressBar
+                    android:id="@+id/main_bar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/bar_blue_color_bg"
+                    android:secondaryProgress="100"
+                    app:layout_heightPercent="3.8%h"
+                    app:layout_marginTopPercent="0.8%h"
+                    app:layout_paddingPercent="1%w" />
+
+                <TextView
+                    android:id="@+id/tv_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="457294"
+                    android:textColor="@color/width"
+                    app:layout_textSizePercent="4.5%" />
+            </cn.tsign.datadisplay.support.PercentLinearLayout>
+            <!--柱状图-->
+            <cn.tsign.datadisplay.support.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_heightPercent="40%h"
+                app:layout_marginLeftPercent="68%w"
+                app:layout_marginTopPercent="10%h"
+                app:layout_paddingPercent="0.5%w"
+                app:layout_widthPercent="30%w">
+
+                <cn.tsign.datadisplay.support.PercentLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_paddingPercent="1%w"
+                    app:layout_widthPercent="10%w">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@color/user_color"
+                        app:layout_heightPercent="4%h"
+                        app:layout_widthPercent="70%w"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="用户详细统计"
+                        android:textColor="@color/width"
+                        app:layout_marginTopPercent="3%h"
+                        app:layout_textSizePercent="50%w" />
+
+                </cn.tsign.datadisplay.support.PercentLinearLayout>
+                <cn.tsign.datadisplay.view.MyChartView
+                    android:id="@+id/my_chart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </cn.tsign.datadisplay.support.PercentLinearLayout>
+            <!--圆形进度条-->
+            <cn.tsign.datadisplay.support.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_heightPercent="40%h"
+                app:layout_marginLeftPercent="68%w"
+                app:layout_marginTopPercent="55%h"
+                app:layout_paddingPercent="0.5%w"
+                app:layout_widthPercent="30%w">
+
+                <cn.tsign.datadisplay.support.PercentLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_paddingPercent="1%w"
+                    app:layout_widthPercent="10%w">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@color/user_color"
+                        app:layout_heightPercent="4%h"
+                        app:layout_widthPercent="70%w"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|top"
+                        android:text="用户详细统计"
+                        android:textColor="@color/width"
+                        app:layout_marginTopPercent="3%h"
+                        app:layout_textSizePercent="50%w" />
+
+                </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+                <cn.tsign.datadisplay.support.PercentRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <cn.tsign.datadisplay.view.CircleProgressView
+                        android:id="@+id/bar_circle_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        app:layout_heightPercent="26%w"
+                        app:layout_marginLeftPercent="7%w"
+                        app:layout_widthPercent="26%w" />
+
+                    <TextView
+                        android:id="@+id/tv_circle_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:lines="1"
+                        app:layout_heightPercent="26%w"
+                        app:layout_marginLeftPercent="7.5%w"
+                        app:layout_textSizePercent="6%"
+                        app:layout_widthPercent="24%w"
+                        android:textColor="@color/width"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/tv_circle_1"
+                        android:lines="1"
+                        android:text="单元人数(人)"
+                        app:layout_marginBottomPercent="10%"
+                        app:layout_textSizePercent="5.5%"
+                        app:layout_widthPercent="28%w"
+                        android:textColor="@color/width" />
+
+                    <cn.tsign.datadisplay.view.CircleProgressView
+                        android:id="@+id/bar_circle_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        app:layout_heightPercent="26%w"
+                        app:layout_marginLeftPercent="37%w"
+                        app:layout_widthPercent="26%w" />
+
+                    <TextView
+                        android:id="@+id/tv_circle_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:lines="1"
+                        app:layout_heightPercent="26%w"
+                        app:layout_marginLeftPercent="37.5%w"
+                        app:layout_textSizePercent="6%"
+                        app:layout_widthPercent="24%w"
+                        android:textColor="@color/width"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/tv_circle_2"
+                        android:lines="1"
+                        android:text="单元机构(个)"
+                        app:layout_marginBottomPercent="10%"
+                        app:layout_textSizePercent="5.5%"
+                        app:layout_widthPercent="28%w"
+                        android:gravity="center"
+                        android:textColor="@color/width"/>
+
+                    <cn.tsign.datadisplay.view.CircleProgressView
+                        android:id="@+id/bar_circle_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        app:layout_heightPercent="26%w"
+                        app:layout_marginLeftPercent="68%w"
+                        app:layout_widthPercent="26%w" />
+
+                    <TextView
+                        android:id="@+id/tv_circle_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:lines="1"
+                        app:layout_heightPercent="26%w"
+                        app:layout_marginLeftPercent="68.5%w"
+                        app:layout_textSizePercent="6%"
+                        app:layout_widthPercent="24%w"
+                        android:textColor="@color/width"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/tv_circle_3"
+                        android:lines="1"
+                        android:text="代理机构(个)"
+                        app:layout_marginBottomPercent="10%"
+                        app:layout_textSizePercent="5.5%"
+                        app:layout_widthPercent="28%w"
+                        android:gravity="center"
+                        android:textColor="@color/width"/>
+                </cn.tsign.datadisplay.support.PercentRelativeLayout>
+            </cn.tsign.datadisplay.support.PercentLinearLayout>
+        </cn.tsign.datadisplay.support.PercentRelativeLayout>
+    </cn.tsign.datadisplay.support.PercentLinearLayout>
+</layout>
+

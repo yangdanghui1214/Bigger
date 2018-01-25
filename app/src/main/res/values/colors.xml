@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="width">#ffffff</color>
+    <color name="user_color">#52ffff</color>
+
+<!--柱状图-->
+    <color name="leftColor">#a1de89</color>
+    <color name="leftColorBottom">#208C59</color>
+    <color name="selectLeftColor">#1daf00</color>
+    <color name="rightColor">#f7e494</color>
+    <color name="rightBottomColor">#f7d194</color>
+    <color name="selectRightColor">#f8935c</color>
+    <color name="rightColor3">#94dbf7</color>
+    <color name="rightBottomColor3">#94b0f7</color>
+    <color name="selectRightColor3">#5c64f8</color>
+    <color name="xyColor">#999</color>
+</resources>
