@@ -172,16 +172,17 @@ public class MyChartView extends View {
         mPaint.setColor(lineColor);
         //画坐标轴
         canvas.drawLine(0, mHeight - 80, mWidth, mHeight - 80, mPaint);
+        mStartWidth += 9;
         for (int i = 0; i < 12; i++) {
             //画刻度线
             canvas.drawLine(mStartWidth, mHeight - 80, mStartWidth, mHeight - 80, mPaint);
             //画数字
-            mPaint.setTextSize(15); 
+            mPaint.setTextSize(15);
             mPaint.setTextAlign(Paint.Align.CENTER);
             mPaint.getTextBounds(String.valueOf(i + 1) + "", 0, String.valueOf(i).length(), mBound);
             canvas.drawText(String.valueOf(i + 1) + "月", mStartWidth - mBound.width() * 1 / 3,
                     mHeight - 60 + mBound.height() * 1 / 3, mPaint);
-            mStartWidth += getWidth() / 8;
+            mStartWidth += getWidth() / 7;
         }
         //画柱状图
         for (int i = 0; i < list.size(); i++) {
@@ -204,18 +205,18 @@ public class MyChartView extends View {
                 LinearGradient lg;
                 switch (i % 3) {
                     case 0:
-                        lg = new LinearGradient(mChartWidth, mChartWidth + mSize, mHeight - 100,
-                                (float) (mHeight - 100 - list.get(i) * size), lefrColorBottom, leftColor, Shader.TileMode.MIRROR);
+                        lg = new LinearGradient(mChartWidth, mChartWidth + mSize, mHeight - 80,
+                                (float) (mHeight - 80 - list.get(i) * size), lefrColorBottom, leftColor, Shader.TileMode.MIRROR);
                         mChartPaint.setShader(lg);
                         break;
                     case 1:
-                        lg = new LinearGradient(mChartWidth, mChartWidth + mSize, mHeight - 100,
-                                (float) (mHeight - 100 - list.get(i) * size), rightColorBottom, rightColor, Shader.TileMode.MIRROR);
+                        lg = new LinearGradient(mChartWidth, mChartWidth + mSize, mHeight - 80,
+                                (float) (mHeight - 80 - list.get(i) * size), rightColorBottom, rightColor, Shader.TileMode.MIRROR);
                         mChartPaint.setShader(lg);
                         break;
                     case 2:
-                        lg = new LinearGradient(mChartWidth, mChartWidth + mSize, mHeight - 100,
-                                (float) (mHeight - 100 - list.get(i) * size), rightColorBottom3, rightColor3, Shader.TileMode.MIRROR);
+                        lg = new LinearGradient(mChartWidth, mChartWidth + mSize, mHeight - 80,
+                                (float) (mHeight - 80 - list.get(i) * size), rightColorBottom3, rightColor3, Shader.TileMode.MIRROR);
                         mChartPaint.setShader(lg);
                         break;
                 }
@@ -233,19 +234,19 @@ public class MyChartView extends View {
             RectF rectF = new RectF();
             rectF.left = mChartWidth;
             rectF.right = mChartWidth + mSize;
-            rectF.bottom = mHeight - 100;
-            rectF.top = (float) (mHeight - 100 - list.get(i) * size);
+            rectF.bottom = mHeight - 80;
+            rectF.top = (float) (mHeight - 80 - list.get(i) * size);
             canvas.drawRoundRect(rectF, 5, 3, mChartPaint);
 //            canvas.drawRect(mChartWidth, mHeight - 100 - list.get(i) * size, mChartWidth + mSize, mHeight - 100, mChartPaint);
             switch (i % 3) {
                 case 0:
-                    mChartWidth += (3 + getWidth() / 36) ;
+                    mChartWidth += (3 + getWidth() / 36);
                     break;
                 case 1:
-                    mChartWidth += (3 + getWidth() / 36) ;
+                    mChartWidth += (3 + getWidth() / 36);
                     break;
                 case 2:
-                    mChartWidth += (getWidth() / 8 - 3 - mSize);
+                    mChartWidth += (getWidth() / 10 - mSize);
                     break;
             }
         }
@@ -270,7 +271,7 @@ public class MyChartView extends View {
         if (visibility == VISIBLE) {
             mSize = getWidth() / 78;
             mStartWidth = getWidth() / 12;
-            mChartWidth = getWidth() / 18 - mSize - 3;
+            mChartWidth = getWidth() / 18 - mSize ;
         }
     }
 
@@ -284,34 +285,34 @@ public class MyChartView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
 
-        int x = (int) ev.getX();
-        int y = (int) ev.getY();
-        int left = 0;
-        int top = 0;
-        int right = mWidth / 36;
-        int bottom = mHeight - 100;
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                for (int i = 0; i < 12; i++) {
-                    rect = new Rect(left, top, right, bottom);
-                    left += mWidth / 12;
-                    right += mWidth / 12;
-                    if (rect.contains(x, y)) {
-                        listener.getNumber(i, x, y);
-                        number = i;
-                        selectIndex = i;
-                        selectIndexRoles.clear();
-                        ;
-                        selectIndexRoles.add(selectIndex * 3 + 1);
-                        selectIndexRoles.add(selectIndex * 3);
-                        invalidate();
-                    }
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-
-                break;
-        }
+//        int x = (int) ev.getX();
+//        int y = (int) ev.getY();
+//        int left = 0;
+//        int top = 0;
+//        int right = mWidth / 36;
+//        int bottom = mHeight - 80;
+//        switch (ev.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                for (int i = 0; i < 12; i++) {
+//                    rect = new Rect(left, top, right, bottom);
+//                    left += mWidth / 12;
+//                    right += mWidth / 12;
+//                    if (rect.contains(x, y)) {
+//                        listener.getNumber(i, x, y);
+//                        number = i;
+//                        selectIndex = i;
+//                        selectIndexRoles.clear();
+//                        ;
+//                        selectIndexRoles.add(selectIndex * 3 + 1);
+//                        selectIndexRoles.add(selectIndex * 3);
+//                        invalidate();
+//                    }
+//                }
+//                break;
+//            case MotionEvent.ACTION_UP:
+//
+//                break;
+//        }
         return true;
     }
 
