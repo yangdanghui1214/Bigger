@@ -21,7 +21,8 @@ import cn.tsign.datadisplay.R;
 
 
 /**
- * Created by tangyangkai on 2016/12/2.
+ * 柱状图
+ * @author ydh
  */
 
 public class MyChartView extends View {

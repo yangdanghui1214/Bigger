@@ -2,6 +2,7 @@ package cn.tsign.datadisplay;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         //binding.rdvDetect.setCenterIcon(CommonUtil.getBitmapFromVectorDrawable(this,R.mipmap.ic_launcher));
         //binding.rdvDetect.setAllAreaActivateStatus(true);
         binding.rdvDetect.setAreaActivateStatus(areaRes, true);
+        binding.rdvDetect.setRegionDetectMode(RegionDetectSurfaceView.REGION_DETECT_MODE_CLICK);
         binding.rdvDetect.setAreaColor(R.string.china_guangdong, Color.YELLOW, -1, -1);
         binding.rdvDetect.setAreaColor(R.string.china_anhui, Color.RED, -1, -1);
         binding.rdvDetect.setAreaColor(R.string.china_fujian, Color.RED, -1, -1);
@@ -122,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
         binding.rdvDetect.setDefaultNormalColor(0x8069BBA8);
         binding.rdvDetect.setDefaultActivateColor(0x802F8BBB);
         binding.rdvDetect.setDefaultHighlightColor(0x80BB945A);
-        binding.rdvDetect.setBackgroundColor(0x00000000);
+//        binding.rdvDetect.setBackgroundColor(Color.RED);
+//        binding.rdvDetect.getBackground().setAlpha(0);
 
         binding.barCircle1.setProgress(70, true);
 

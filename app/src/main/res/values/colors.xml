@@ -22,4 +22,7 @@
     <color name="chart_unit">#ccff66</color>
     <color name="chart_agent">#ffcc66</color>
     <color name="chart_user">#4bb7e6</color>
+
+    <color name="color_null">#0000</color>
+
 </resources>

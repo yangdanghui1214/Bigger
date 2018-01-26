@@ -142,7 +142,7 @@
             <cn.tsign.datadisplay.lib.region.widget.RegionDetectSurfaceView
                 android:id="@+id/rdv_detect"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -323,7 +323,7 @@
                         android:text="用户详细统计"
                         android:textColor="@color/width"
                         app:layout_marginTopPercent="3%h"
-                        app:layout_textSizePercent="50%w" />
+                        app:layout_textSizePercent="45%w" />
 
                 </cn.tsign.datadisplay.support.PercentLinearLayout>
                 <cn.tsign.datadisplay.view.MyChartView
@@ -365,7 +365,7 @@
                         android:text="用户详细统计"
                         android:textColor="@color/width"
                         app:layout_marginTopPercent="3%h"
-                        app:layout_textSizePercent="50%w" />
+                        app:layout_textSizePercent="45%w" />
 
                 </cn.tsign.datadisplay.support.PercentLinearLayout>
 

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
@@ -67,6 +68,8 @@ public abstract class BaseSurfaceView extends SurfaceView implements SurfaceHold
         setFocusable(true);
         setFocusableInTouchMode(true);
         getHolder().addCallback(this);
+        setZOrderOnTop(true);//使surfaceview放到最顶层
+        getHolder().setFormat(PixelFormat.TRANSLUCENT);//使窗口支持透明度
         //drawThread = new DrawThread(getHolder());
     }
 
@@ -169,11 +172,11 @@ public abstract class BaseSurfaceView extends SurfaceView implements SurfaceHold
      * @param canvas
      */
     private void drawBackground(Canvas canvas) {
-        if (bgColor == 0) {
-            canvas.drawColor(bgColor, PorterDuff.Mode.CLEAR);
-        } else {
-            canvas.drawColor(bgColor);
-        }
+//        if (bgColor == 0) {
+            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+//        } else {
+//            canvas.drawColor(bgColor);
+//        }
 
         if (bgBitmap != null) {
             try {
@@ -201,7 +204,9 @@ public abstract class BaseSurfaceView extends SurfaceView implements SurfaceHold
                 try {
                     canvas = surfaceHolder.lockCanvas();
                     if (canvas != null) {
-                        drawBackground(canvas);
+                        setAlpha(0);
+                        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+//                        drawBackground(canvas);
                         doDraw(canvas);
                     }
                     if (drawPauseTime > 0) {
