@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">DataDisplay</string>
-
     <string name="china_beijing">北京</string>
-    <array name="china_beijing_list">
-        <item>北京</item>
-        <item>幼儿园:2</item>
-    </array>
     <string name="china_tianjin">天津</string>
     <string name="china_shanghai">上海</string>
     <string name="china_chongqing">重庆</string>
@@ -20,10 +15,6 @@
     <string name="china_fujian">福建</string>
     <string name="china_jiangxi">江西</string>
     <string name="china_shandong">山东</string>
-    <array name="china_shandong_list">
-        <item>山东</item>
-        <item>幼儿园、中小学、培训机构:78</item>
-    </array>
     <string name="china_henan">河南</string>
     <string name="china_hubei">湖北</string>
     <string name="china_hunan">湖南</string>
@@ -41,9 +32,17 @@
     <string name="china_xizang">西藏</string>
     <string name="china_ningxia">宁夏</string>
     <string name="china_xinjiang">新疆</string>
+    <string name="china_xianggang">香港</string>
     <array name="china_xinjiang_list">
         <item>新疆</item>
         <item>幼儿园:2</item>
     </array>
-    <string name="china_xianggang">香港</string>
+    <array name="china_beijing_list">
+        <item>北京</item>
+        <item>幼儿园:2</item>
+    </array>
+    <array name="china_shandong_list">
+        <item>山东</item>
+        <item>幼儿园、中小学、培训机构:78</item>
+    </array>
 </resources>

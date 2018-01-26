@@ -193,7 +193,7 @@ public class RegionDetectSurfaceView extends BaseSurfaceView {
 
     private int animateTime = 300;//动画时间，ms
 
-    private boolean isOpenCenterLocation = true;//是否启用中心定位点
+    private boolean isOpenCenterLocation = false;//是否启用中心定位点
 
     private String selectedActivateKey = "";//选中的激活区域（会高亮显示），只有在isOpenCenterLocation为false才生效
 

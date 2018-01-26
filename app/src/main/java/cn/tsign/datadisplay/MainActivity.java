@@ -28,6 +28,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import cn.tsign.datadisplay.databinding.ActivityMainBinding;
 import cn.tsign.datadisplay.lib.region.utils.CommonUtil;
@@ -44,12 +46,43 @@ public class MainActivity extends AppCompatActivity {
     private static String mYear;
     private static String mMonth;
     private static String mDay;
+    /*设置可点击区域*/
     int[] areaRes = new int[]{
-            R.string.china_anhui, R.string.china_beijing, R.string.china_guangdong
-            , R.string.china_chongqing, R.string.china_xinjiang, R.string.china_fujian
-            , R.string.china_gansu, R.string.china_zhejiang, R.string.china_yunnan
-            , R.string.china_xizang, R.string.china_tianjin
-            , R.string.china_shandong, R.string.china_heilongjiang, R.string.china_hainan
+            R.string.china_jilin,
+            R.string.china_jiangsu,
+            R.string.china_zhejiang,
+            R.string.china_jiangxi,
+            R.string.china_henan,
+            R.string.china_hubei,
+            R.string.china_hunan,
+            R.string.china_guizhou,
+            R.string.china_hainan,
+            R.string.china_sichuan,
+            R.string.china_yunnan,
+            R.string.china_shaanxi,
+            R.string.china_gansu,
+            R.string.china_qinghai,
+            R.string.china_taiwan,
+            R.string.china_neimenggu,
+            R.string.china_guangxi,
+            R.string.china_ningxia,
+            R.string.china_xianggang,
+            R.string.china_liaoning,
+            R.string.china_shanxi,
+            R.string.china_hebei,
+            R.string.china_guangdong,
+            R.string.china_shanghai,
+            R.string.china_beijing,
+            R.string.china_tianjin,
+            R.string.china_anhui,
+            R.string.china_fujian,
+            R.string.china_shandong,
+            R.string.china_chongqing,
+            R.string.china_heilongjiang,
+            R.string.china_xinjiang,
+            R.string.china_xizang,
+            R.string.china_hainan,
+
     };
 
     int[] areaRes2 = new int[]{
@@ -63,21 +96,35 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+    
+    private final Timer timer = new Timer();
+    private TimerTask task;
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // 想要执行的事件
+            super.handleMessage(msg);
+            a += 1;
+            if (a < areaRes.length) {
+                binding.rdvDetect.setSelectedAreaOnlyCloseCenterLocation(areaRes[a]);
+            }
+        }
+    };
+    int a = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//得到当前界面的装饰视图
+        //得到当前界面的装饰视图
         View decorView = getWindow().getDecorView();
-//        SYSTEM_UI_FLAG_FULLSCREEN表示全屏的意思，也就是会将状态栏隐藏
         //设置系统UI元素的可见性
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         //隐藏标题栏
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         new TimeThread().start();//启动时钟线程
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.textYear.setText(StringYear());
         binding.rdvDetect.setOnActivateRegionDetectListener(new RegionDetectSurfaceView.OnActivateRegionDetectListener() {
             @Override
@@ -114,21 +161,45 @@ public class MainActivity extends AppCompatActivity {
         //binding.rdvDetect.setAllAreaActivateStatus(true);
         binding.rdvDetect.setAreaActivateStatus(areaRes, true);
         binding.rdvDetect.setRegionDetectMode(RegionDetectSurfaceView.REGION_DETECT_MODE_CLICK);
-        binding.rdvDetect.setAreaColor(R.string.china_guangdong, Color.YELLOW, -1, -1);
-        binding.rdvDetect.setAreaColor(R.string.china_anhui, Color.RED, -1, -1);
-        binding.rdvDetect.setAreaColor(R.string.china_fujian, Color.RED, -1, -1);
-        binding.rdvDetect.setAreaColor(R.string.china_shandong, Color.RED, -1, -1);
-        binding.rdvDetect.setAreaColor(R.string.china_chongqing, Color.GREEN, -1, -1);
+        binding.rdvDetect.isOpenCenterLocation(false);
+
+        binding.rdvDetect.setAreaColor(R.string.china_jilin, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_jiangsu, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_zhejiang, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_jiangxi, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_henan, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_hubei, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_hunan, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_guizhou, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_hainan, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_sichuan, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_yunnan, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_shaanxi, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_gansu, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_qinghai, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_taiwan, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_neimenggu, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_guangxi, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_ningxia, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_xianggang, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_liaoning, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_shanxi, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_hebei, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_guangdong, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_shanghai, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_beijing, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_tianjin, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_anhui, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_fujian, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_shandong, -1, -1, -1);
+        binding.rdvDetect.setAreaColor(R.string.china_chongqing, -1, -1, -1);
         binding.rdvDetect.setCenterIconVisibility(true);
         //binding.rdvDetect.setCenterIconLocationType(RegionDetectSurfaceView.CENTER_ICON_POSITION_CENTER);
-        binding.rdvDetect.setDefaultNormalColor(0x8069BBA8);
-        binding.rdvDetect.setDefaultActivateColor(0x802F8BBB);
-        binding.rdvDetect.setDefaultHighlightColor(0x80BB945A);
-//        binding.rdvDetect.setBackgroundColor(Color.RED);
-//        binding.rdvDetect.getBackground().setAlpha(0);
+        binding.rdvDetect.setDefaultNormalColor(0x305ffbf8);
+        binding.rdvDetect.setDefaultActivateColor(0x305ffbf8);
+        binding.rdvDetect.setDefaultHighlightColor(0x905ffbf8);
 
         binding.barCircle1.setProgress(70, true);
-
         /*柱状图*/
         binding.myChartView.setLeftColor(getResources().getColor(R.color.leftColor));
         binding.myChartView.setLefrColorBottom(getResources().getColor(R.color.leftColorBottom));
@@ -157,10 +228,23 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getColor(R.color.chart_agent),
                 getResources().getColor(R.color.chart_user),
         };
-
         //使用随机颜色
         binding.pieView.setData(data, name, color);
+
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
+            }
+        };
+        timer.schedule(task, 5000, 5000);
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -186,7 +270,6 @@ public class MainActivity extends AppCompatActivity {
                 binding.rdvDetect.setDefaultNormalColor(0x8069BBA8);
                 binding.rdvDetect.setDefaultActivateColor(0x802F8BBB);
                 binding.rdvDetect.setDefaultHighlightColor(0x80BB945A);
-                binding.rdvDetect.setBackgroundColor(0xFF000000);
                 break;
             case R.id.m_mode_center:
                 binding.rdvDetect.setRegionDetectMode(RegionDetectSurfaceView.REGION_DETECT_MODE_CENTER);
