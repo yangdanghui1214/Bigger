@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:don="http://schemas.android.com/tools">
 
     <cn.tsign.datadisplay.support.PercentLinearLayout
         android:layout_width="match_parent"
@@ -272,16 +273,33 @@
                     android:textColor="@color/width"
                     app:layout_textSizePercent="4.5%" />
             </cn.tsign.datadisplay.support.PercentLinearLayout>
+
+            <!--饼状图-->
+            <cn.tsign.datadisplay.support.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="23%h"
+                app:layout_widthPercent="23%w"
+                app:layout_marginLeftPercent="40%w"
+                app:layout_marginTopPercent="75%h">
+                <cn.tsign.datadisplay.view.LinePieView
+                    android:id="@+id/pieView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    don:circleWidth="10sp"
+                    don:dataTextColor="#ff00ff"
+                    don:dataTextSize="12sp"/>
+            </cn.tsign.datadisplay.support.PercentLinearLayout>
             <!--柱状图-->
             <cn.tsign.datadisplay.support.PercentLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 app:layout_heightPercent="40%h"
+                app:layout_widthPercent="30%w"
                 app:layout_marginLeftPercent="68%w"
                 app:layout_marginTopPercent="10%h"
-                app:layout_paddingPercent="0.5%w"
-                app:layout_widthPercent="30%w">
+                app:layout_paddingPercent="0.5%w">
 
                 <cn.tsign.datadisplay.support.PercentLinearLayout
                     android:layout_width="match_parent"
@@ -464,6 +482,7 @@
                 </cn.tsign.datadisplay.support.PercentRelativeLayout>
             </cn.tsign.datadisplay.support.PercentLinearLayout>
         </cn.tsign.datadisplay.support.PercentRelativeLayout>
+
     </cn.tsign.datadisplay.support.PercentLinearLayout>
 </layout>
 

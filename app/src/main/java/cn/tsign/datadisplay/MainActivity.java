@@ -19,6 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.don.pieviewlibrary.LinePieView;
+import com.don.pieviewlibrary.PercentPieView;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -123,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.barCircle1.setProgress(70, true);
 
+        /*柱状图*/
         binding.myChartView.setLeftColor(getResources().getColor(R.color.leftColor));
         binding.myChartView.setLefrColorBottom(getResources().getColor(R.color.leftColorBottom));
         binding.myChartView.setSelectLeftColor(getResources().getColor(R.color.selectLeftColor));
@@ -141,6 +145,18 @@ public class MainActivity extends AppCompatActivity {
             chartList.add((float) randomInt);
         }
         binding.myChartView.setList(chartList);
+
+        /*饼状图*/
+        int[] data = new int[]{100, 200, 50};
+        String[] name = new String[]{"单元", "机构", "用户"};
+        int[] color = new int[]{
+                getResources().getColor(R.color.chart_unit),
+                getResources().getColor(R.color.chart_agent),
+                getResources().getColor(R.color.chart_user),
+        };
+
+        //使用随机颜色
+        binding.pieView.setData(data, name, color);
     }
 
     @Override
