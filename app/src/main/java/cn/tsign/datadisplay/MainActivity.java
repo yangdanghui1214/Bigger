@@ -6,6 +6,7 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
@@ -14,14 +15,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.don.pieviewlibrary.LinePieView;
-import com.don.pieviewlibrary.PercentPieView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,40 +41,17 @@ public class MainActivity extends AppCompatActivity {
     private static String mDay;
     /*设置可点击区域*/
     int[] areaRes = new int[]{
-            R.string.china_jilin,
-            R.string.china_jiangsu,
-            R.string.china_zhejiang,
-            R.string.china_jiangxi,
-            R.string.china_henan,
-            R.string.china_hubei,
-            R.string.china_hunan,
-            R.string.china_guizhou,
-            R.string.china_hainan,
-            R.string.china_sichuan,
-            R.string.china_yunnan,
-            R.string.china_shaanxi,
-            R.string.china_gansu,
-            R.string.china_qinghai,
-            R.string.china_taiwan,
-            R.string.china_neimenggu,
-            R.string.china_guangxi,
-            R.string.china_ningxia,
-            R.string.china_xianggang,
-            R.string.china_liaoning,
-            R.string.china_shanxi,
-            R.string.china_hebei,
-            R.string.china_guangdong,
-            R.string.china_shanghai,
-            R.string.china_beijing,
-            R.string.china_tianjin,
-            R.string.china_anhui,
-            R.string.china_fujian,
-            R.string.china_shandong,
-            R.string.china_chongqing,
-            R.string.china_heilongjiang,
-            R.string.china_xinjiang,
-            R.string.china_xizang,
-            R.string.china_hainan,
+            R.string.china_jilin, R.string.china_jiangsu,
+            R.string.china_zhejiang, R.string.china_jiangxi,
+            R.string.china_henan, R.string.china_hubei,
+            R.string.china_hunan, R.string.china_guizhou, R.string.china_hainan,
+            R.string.china_sichuan, R.string.china_yunnan, R.string.china_shaanxi, R.string.china_gansu, R.string.china_qinghai,
+            R.string.china_taiwan, R.string.china_neimenggu, R.string.china_guangxi,
+            R.string.china_ningxia, R.string.china_xianggang, R.string.china_liaoning,
+            R.string.china_shanxi, R.string.china_hebei, R.string.china_guangdong,
+            R.string.china_shanghai, R.string.china_beijing, R.string.china_tianjin, R.string.china_anhui,
+            R.string.china_fujian, R.string.china_shandong, R.string.china_chongqing, R.string.china_heilongjiang,
+            R.string.china_xinjiang, R.string.china_xizang, R.string.china_hainan,
 
     };
 
@@ -95,8 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     ActivityMainBinding binding;
+    /*饼状图*/
+    String[] name = new String[]{"单元", "机构", "用户"};
+    List<int[]> listBing = new ArrayList<>();
+    int[] color;
 
-    
+
+    List<int[]> listLinear = new ArrayList<>();
     private final Timer timer = new Timer();
     private TimerTask task;
     Handler handler = new Handler() {
@@ -106,11 +81,26 @@ public class MainActivity extends AppCompatActivity {
             super.handleMessage(msg);
             a += 1;
             if (a < areaRes.length) {
+                /*地图*/
                 binding.rdvDetect.setSelectedAreaOnlyCloseCenterLocation(areaRes[a]);
+                /*饼状图*/
+                binding.pieView.setData(listBing.get(a), name, color);
+                /*线性进度条*/
+                binding.mainBar1.setProgress(listLinear.get(0)[0]);
+                binding.mainBar2.setProgress(listLinear.get(0)[1]);
+                binding.mainBar3.setProgress(listLinear.get(0)[2]);
+                /*圆形进度条*/
+                binding.barCircle1.setProgress(listLinear.get(0)[0], true);
+                binding.barCircle2.setProgress(listLinear.get(0)[1], true);
+                binding.barCircle3.setProgress(listLinear.get(0)[2], true);
+            } else {
+                System.gc();
+                a = 0;
             }
         }
     };
     int a = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
         binding.rdvDetect.setDefaultActivateColor(0x305ffbf8);
         binding.rdvDetect.setDefaultHighlightColor(0x905ffbf8);
 
-        binding.barCircle1.setProgress(70, true);
         /*柱状图*/
         binding.myChartView.setLeftColor(getResources().getColor(R.color.leftColor));
         binding.myChartView.setLefrColorBottom(getResources().getColor(R.color.leftColorBottom));
@@ -211,26 +200,34 @@ public class MainActivity extends AppCompatActivity {
         binding.myChartView.setRightColorBottom3(getResources().getColor(R.color.rightBottomColor3));
         binding.myChartView.setSelectRightColor3(getResources().getColor(R.color.selectRightColor3));
         binding.myChartView.setLineColor(getResources().getColor(R.color.xyColor));
-        List chartList = new ArrayList<>();
 
+        //柱状图
+        List chartList = new ArrayList<>();
         Random random = new Random();
         while (chartList.size() < 36) {
-            int randomInt = random.nextInt(80);
+            int randomInt = chartList.size() * 5 + random.nextInt(8);
             chartList.add((float) randomInt);
         }
         binding.myChartView.setList(chartList);
 
+        for (int i = 0; i < 34; i++) {
+            listBing.add(new int[]{100 * (i + 1), 200 * i, 50 * (i + 2)});
+            listLinear.add(new int[]{random.nextInt(45) + 50, random.nextInt(45) + 50, random.nextInt(45) + 50});
+        }
         /*饼状图*/
-        int[] data = new int[]{100, 200, 50};
-        String[] name = new String[]{"单元", "机构", "用户"};
-        int[] color = new int[]{
+        color = new int[]{
                 getResources().getColor(R.color.chart_unit),
                 getResources().getColor(R.color.chart_agent),
                 getResources().getColor(R.color.chart_user),
         };
-        //使用随机颜色
-        binding.pieView.setData(data, name, color);
+        binding.pieView.setData(listBing.get(0), name, color);
 
+        binding.mainBar1.setProgress(listLinear.get(0)[0]);
+        binding.mainBar2.setProgress(listLinear.get(0)[1]);
+        binding.mainBar3.setProgress(listLinear.get(0)[2]);
+        binding.barCircle1.setProgress(listLinear.get(0)[0], true);
+        binding.barCircle2.setProgress(listLinear.get(0)[1], true);
+        binding.barCircle3.setProgress(listLinear.get(0)[2], true);
         task = new TimerTask() {
             @Override
             public void run() {
@@ -240,10 +237,9 @@ public class MainActivity extends AppCompatActivity {
                 handler.sendMessage(message);
             }
         };
-        timer.schedule(task, 5000, 5000);
+        timer.schedule(task, 1000, 10000);
 
     }
-
 
 
     @Override

@@ -7,15 +7,15 @@
     <color name="user_color">#52ffff</color>
 
 <!--柱状图-->
-    <color name="leftColor">#a1de89</color>
-    <color name="leftColorBottom">#208C59</color>
-    <color name="selectLeftColor">#1daf00</color>
-    <color name="rightColor">#f7e494</color>
-    <color name="rightBottomColor">#f7d194</color>
-    <color name="selectRightColor">#f8935c</color>
-    <color name="rightColor3">#94dbf7</color>
-    <color name="rightBottomColor3">#94b0f7</color>
-    <color name="selectRightColor3">#5c64f8</color>
+    <color name="leftColor">#51b495</color>
+    <color name="leftColorBottom">#51b495</color>
+    <color name="selectLeftColor">#51b495</color>
+    <color name="rightColor">#e34a47</color>
+    <color name="rightBottomColor">#e34a47</color>
+    <color name="selectRightColor">#e34a47</color>
+    <color name="rightColor3">#3689a2</color>
+    <color name="rightBottomColor3">#3689a2</color>
+    <color name="selectRightColor3">#3689a2</color>
     <color name="xyColor">#999</color>
 
     <!--饼状图-->
