@@ -44,14 +44,21 @@ public class MainActivity extends AppCompatActivity {
             R.string.china_jilin, R.string.china_jiangsu,
             R.string.china_zhejiang, R.string.china_jiangxi,
             R.string.china_henan, R.string.china_hubei,
-            R.string.china_hunan, R.string.china_guizhou, R.string.china_hainan,
-            R.string.china_sichuan, R.string.china_yunnan, R.string.china_shaanxi, R.string.china_gansu, R.string.china_qinghai,
-            R.string.china_taiwan, R.string.china_neimenggu, R.string.china_guangxi,
-            R.string.china_ningxia, R.string.china_xianggang, R.string.china_liaoning,
-            R.string.china_shanxi, R.string.china_hebei, R.string.china_guangdong,
-            R.string.china_shanghai, R.string.china_beijing, R.string.china_tianjin, R.string.china_anhui,
-            R.string.china_fujian, R.string.china_shandong, R.string.china_chongqing, R.string.china_heilongjiang,
-            R.string.china_xinjiang, R.string.china_xizang, R.string.china_hainan,
+            R.string.china_hunan, R.string.china_guizhou,
+            R.string.china_hainan, R.string.china_shaanxi,
+            R.string.china_sichuan, R.string.china_yunnan,
+            R.string.china_gansu, R.string.china_qinghai,
+            R.string.china_taiwan, R.string.china_neimenggu,
+            R.string.china_guangxi,
+            R.string.china_ningxia, R.string.china_xianggang,
+            R.string.china_shanxi, R.string.china_hebei,
+            R.string.china_shanghai, R.string.china_beijing,
+            R.string.china_tianjin, R.string.china_anhui,
+            R.string.china_fujian, R.string.china_shandong,
+            R.string.china_chongqing, R.string.china_heilongjiang,
+            R.string.china_xinjiang, R.string.china_xizang,
+            R.string.china_hainan,R.string.china_guangdong,
+            R.string.china_liaoning
 
     };
 
@@ -65,12 +72,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     ActivityMainBinding binding;
+
+    Random random = new Random();
     /*饼状图*/
     String[] name = new String[]{"单元", "机构", "用户"};
     List<int[]> listBing = new ArrayList<>();
     int[] color;
 
-
+    int size=21216;
     List<int[]> listLinear = new ArrayList<>();
     private final Timer timer = new Timer();
     private TimerTask task;
@@ -86,13 +95,17 @@ public class MainActivity extends AppCompatActivity {
                 /*饼状图*/
                 binding.pieView.setData(listBing.get(a), name, color);
                 /*线性进度条*/
-                binding.mainBar1.setProgress(listLinear.get(0)[0]);
-                binding.mainBar2.setProgress(listLinear.get(0)[1]);
-                binding.mainBar3.setProgress(listLinear.get(0)[2]);
+                binding.mainBar1.setProgress(listLinear.get(a)[0]);
+                binding.mainBar2.setProgress(listLinear.get(a)[1]);
+                binding.mainBar3.setProgress(listLinear.get(a)[2]);
+                binding.tvBaySize.setText((size/100)*listLinear.get(a)[0]+"");
+                binding.tvMonthSize.setText((size/100)*listLinear.get(a)[1]+"");
+                binding.tvSize.setText(size+"");
                 /*圆形进度条*/
-                binding.barCircle1.setProgress(listLinear.get(0)[0], true);
-                binding.barCircle2.setProgress(listLinear.get(0)[1], true);
-                binding.barCircle3.setProgress(listLinear.get(0)[2], true);
+                binding.barCircle1.setProgress(listLinear.get(a)[0], true);
+                binding.barCircle2.setProgress(listLinear.get(a)[1], true);
+                binding.barCircle3.setProgress(listLinear.get(a)[2], true);
+                size+=random.nextInt(10);
             } else {
                 System.gc();
                 a = 0;
@@ -203,7 +216,6 @@ public class MainActivity extends AppCompatActivity {
 
         //柱状图
         List chartList = new ArrayList<>();
-        Random random = new Random();
         while (chartList.size() < 36) {
             int randomInt = chartList.size() * 5 + random.nextInt(8);
             chartList.add((float) randomInt);
